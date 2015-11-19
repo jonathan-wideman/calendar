@@ -38,7 +38,14 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Landing Page</div>
+                <div class="title">Web Calendar</div>
+                <p>email:</p>
+                <p>password:</p>
+                <p>confirm password:</p>
+                <p>recieve notifications:</p>
+                <p><a href="/calendar">login</a></p>
+                <p><a href="/calendar">create account</a></p>
+                <div class="title">Feature Overview</div>
             </div>
         </div>
     </body>
