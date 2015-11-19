@@ -45,7 +45,14 @@
                 <p>recieve notifications:</p>
                 <p><a href="/calendar">login</a></p>
                 <p><a href="/calendar">create account</a></p>
-                <div class="title">Feature Overview</div>
+                <div class="title">Features</div>
+                <div>
+                    <ul>
+                        <li>fast</li>
+                        <li>efficient</li>
+                        <li>simple</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </body>
