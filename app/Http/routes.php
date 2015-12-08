@@ -44,3 +44,7 @@ Route::get('/logout', function () {
 Route::get('/calendar', function () {
     return view('calendar');
 });
+
+Route::get('/test', function () {
+    return view('welcome');
+});
