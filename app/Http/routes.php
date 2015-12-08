@@ -41,6 +41,5 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
-Route::get('/calendar', function () {
-    return view('calendar');
-});
+// Let the CalendarController handle all routes to 'calendar/whatever'
+Route::controller('calendar', 'CalendarController');
