@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 class CalendarController extends Controller
 {
     /**
@@ -14,43 +16,50 @@ class CalendarController extends Controller
 
     public function getEvents()
     {
-        $result = [
-            (object) [
-                'name' => 'foo',
-                'start' => 1,
-                'end' => 2,
-                'icon' => ''
-            ],
-            (object) [
-                'name' => 'bar',
-                'start' => 1,
-                'end' => 2,
-                'icon' => ''
-            ],
-            (object) [
-                'name' => 'bat',
-                'start' => 1,
-                'end' => 2,
-                'icon' => ''
-            ],
-            (object) [
-                'name' => 'bin',
-                'start' => 1,
-                'end' => 2,
-                'icon' => ''
-            ],
-            (object) [
-                'name' => 'bly',
-                'start' => 1,
-                'end' => 2,
-                'icon' => ''
-            ],
-        ];
-        return json_encode($result);
+
+        $events = DB::select('select * from events');
+        // dd($events);
+
+        // The events object should look like this:
+        
+        // $events = [
+        //     (object) [
+        //         'name' => 'foo',
+        //         'start' => 1,
+        //         'end' => 2,
+        //         'icon' => ''
+        //     ],
+        //     (object) [
+        //         'name' => 'bar',
+        //         'start' => 1,
+        //         'end' => 2,
+        //         'icon' => ''
+        //     ],
+        //     (object) [
+        //         'name' => 'bat',
+        //         'start' => 1,
+        //         'end' => 2,
+        //         'icon' => ''
+        //     ],
+        //     (object) [
+        //         'name' => 'bin',
+        //         'start' => 1,
+        //         'end' => 2,
+        //         'icon' => ''
+        //     ],
+        //     (object) [
+        //         'name' => 'bly',
+        //         'start' => 1,
+        //         'end' => 2,
+        //         'icon' => ''
+        //     ],
+        // ];
+
+        return json_encode($events);
     }
 
     /**
-     * Responds to requests to GET /users/show/1
+     * Responds to requests to GET /events/show/1
      */
     // public function getShow($id)
     // {
@@ -58,7 +67,7 @@ class CalendarController extends Controller
     // }
 
     /**
-     * Responds to requests to GET /users/admin-profile
+     * Responds to requests to GET /events/admin-profile
      */
     // public function getAdminProfile()
     // {
@@ -66,7 +75,7 @@ class CalendarController extends Controller
     // }
 
     /**
-     * Responds to requests to POST /users/profile
+     * Responds to requests to POST /events/profile
      */
     // public function postProfile()
     // {
