@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Calendar">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -61,8 +61,21 @@
                 font-size: 96px;
             }
         </style>
+
+        <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.8/angular.js" data-semver="1.4.8"></script>
+        <script src="js/app.js"></script>
+
     </head>
-    <body>
+    <body ng-controller="MainCtrl">
+
+        <p>Hello @{{name}}!</p>
+
+        <p ng-repeat="event in events">@{{event.name}}, starts: @{{event.start}}, ends: @{{event.end}}</p>
+
+        <a ng-click="showStuff = !showStuff">show</a>
+
+        <p ng-show="showStuff">I've been shown</p>
+
         <div class="nav left">
             <span>[^]</span>
             <span>day</span>
