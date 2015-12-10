@@ -94,12 +94,12 @@
                                                 </div>
 
                                                 <div class="input-group">
-                                                    <div class="checkbox">
+                                                    <div class"input-group" >
                                                         <input type="checkbox" name="remember"> Remember Me
                                                     </div>
 
                                                     <div style="margin-top:10px" class="form-group">
-                                                        <div class="input-group">
+                                                        <div "col-md-offset-3 col-md-9">
                                                             <button id="btn-login" type="submit" href="#" class="btn btn-success"><i class=" glyphicon glyphicon-ok-sign">Login</i></button>
                                                         </div>
                                                     </div>
@@ -172,6 +172,6 @@
                 </div>
             </div>
         </div>
-        
+
     </body>
 </html>
