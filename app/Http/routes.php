@@ -43,3 +43,7 @@ Route::get('/logout', function () {
 
 // Let the CalendarController handle all routes to 'calendar/whatever'
 Route::controller('calendar', 'CalendarController');
+
+Route::get('/test', function () {
+    return view('welcome');
+});
