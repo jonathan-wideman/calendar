@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
-<html>
-    <head>
-=======
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,10 +9,10 @@
 
     <!-- Bootstrap CSS served from a CDN -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
->>>>>>> Stashed changes
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -52,9 +48,6 @@
                 font-size:20px;
             }
 
-            .div1 {
-              display: hidden;
-            }
             .calendar {
                 width: 100%;
             }
@@ -71,50 +64,72 @@
               font-size:15px;
             }
 
-            .nav2 {
-              font-size:20px;
-              margin: 0;
-              padding: 0;
-              width: 50%;
-              display: table;
-              font-weight: 100;
-              font-family: 'lato' ;
-            }
+    .nav2 {
+    font-size:20px;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    display: table;
+    font-weight: 100;
+    font-family: 'lato' ;
+  }
 
-      table {
-      background: #fff;
-      border-collapse: collapse;
-      color: #222;
-      font-family: 'lato';
-      font-size: 13px;
-      width: 100%;
-    }
-    td {
-      border: 2px solid #ccc;
-      height: 100px;
-      color: #222;
-      line-height: 22px;
-      text-align: left;
-      font-weight: bold;
-      vertical-align: top;
-    }
+    table.monthView {
+    background: #fff;
+    border-collapse: collapse;
+    font-family: 'lato';
+    font-size: 13px;
+    width: 100%;
+  }
+
+  table.monthView td {
+    border: 2px solid #ccc;
+    height: 100px;
+    line-height: 22px;
+    text-align: left;
+    font-weight: bold;
+    vertical-align: top;
+  }
+
+  table.monthView td:hover {
+    background-color: #337ab7;
+    color: white;
+  }
+
+    table.weekView {
+    background: #fff;
+    border-collapse: collapse;
+    font-family: 'lato';
+    font-size: 13px;
+    width: 95%;
+    align: right;
+  }
+
+  table.weekView td {
+    border: 2px solid #ccc;
+    height: 25px;
+    color: #222;
+    line-height: 22px;
+    text-align: left;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+  td.weekDate {
+    height: 50px;
+  }
+
     tr:first-child td {
       text-align: center;
       vertical-align: text-top;
       height: 25px;
       width: 50px;
-      color: #222;
       font-weight: 700;
     }
-    .selected {
-      background: #f0952d;
-      border: 2;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, .5) inset;
-    }
 
-        </style>
 
-<div class="div2">
+    </style>
+
   <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -129,11 +144,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-      <ul class="nav navbar-nav">
-        <li role="presentation"> <a data-toggle="tab" href="#wView">Week</a></li>
-        <li role="presentation"> <a href="#mView">Month</a></li>
-        <li role="presentation"> <a href="#dView">Day</a></li>
-      </ul>
+
 
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -148,33 +159,26 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-</div>
     </head>
 
 
 
 
     <body>
-<<<<<<< Updated upstream
-        <div class="nav left">
-            <span>[^]</span>
-            <span>day</span>
-            <span>week</span>
-            <span>month</span>
-            <span>toolbar</span>
-            <span>search</span>
-        </div>
-        <div class="nav right">
-            <span>user@email.com</span>
-            <span><a href="/">logout</a></span>
-        </div>
-        <div class="calendar">
-            <div class="title">Calendar Page</div>
-        </div>
-=======
+
+
+<div>
+    <ul class="nav nav-tabs">
+    <li role="presentation"> <a data-toggle="tab" href="#wView">Week</a></li>
+    <li role="presentation" class="active"> <a data-toggle="tab" href="#mView">Month</a></li>
+    <li role="presentation"> <a data-toggle="tab" href="#dView">Day</a></li>
+    </ul>
+
+<!--Month view layout-->
 <div class="tab-content">
   <div id="mView" role="presentation" class="tab-pane fade in active">
-<table>
+
+<table class="monthView">
   <tr>
     <td>Sun</td>
     <td>Mon</td>
@@ -231,13 +235,100 @@
   </tr>
 </table>
 </div>
+
+<!--Week view layout-->
+<div id="wView" role="presentation" class="tab-pane fade">
+
+<table class="weekView">
+
+  <tr>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+  </tr>
+
+  <tr>
+    <td class="weekDate">12A.M</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+</table>
 </div>
 
-<div id="wView" role="presentation" class="tab-pane fade in active"></div>
-<div id="dView" role="presentation" class="tab-pane fade in active"></div>
+<!--Day view layout-->
+<div id="dView" role="presentation" class="tab-pane fade"></div>
+</div>
+</div>
 
 
-
->>>>>>> Stashed changes
     </body>
 </html>

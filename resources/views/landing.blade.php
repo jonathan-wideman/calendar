@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
-<html>
-    <head>
-        <title>Laravel</title>
-=======
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -16,9 +11,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
->>>>>>> Stashed changes
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
@@ -46,6 +39,7 @@
 
             .title {
                 font-size: 96px;
+
             }
             .title {
               font-size: 96px;
@@ -59,27 +53,6 @@
         </style>
     </head>
     <body>
-<<<<<<< Updated upstream
-        <div class="container">
-            <div class="content">
-                <div class="title">Web Calendar</div>
-                <p>email:</p>
-                <p>password:</p>
-                <p>confirm password:</p>
-                <p>recieve notifications:</p>
-                <p><a href="/calendar">login</a></p>
-                <p><a href="/calendar">create account</a></p>
-                <div class="title">Features</div>
-                <div>
-                    <ul>
-                        <li>fast</li>
-                        <li>efficient</li>
-                        <li>simple</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-=======
 
       <div class="container">
         <div class="title">Web Calendar</div>
@@ -194,7 +167,7 @@
             </form>
       </div>
     </div>
-    
+
     <!-- Return error messages -->
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -225,6 +198,5 @@
 
 
 
->>>>>>> Stashed changes
     </body>
 </html>
