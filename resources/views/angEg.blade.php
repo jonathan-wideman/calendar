@@ -76,6 +76,18 @@
 
         <p ng-show="showStuff">I've been shown</p>
 
+        <br>
+        <a ng-click="updateTime()">Update Time</a>
+        <br>
+        <p>Data:</p>
+        <pre>@{{data}}</pre>
+        <br>
+        <p>Status: @{{status}}</p>
+        <br>
+        <p>Result:
+        <pre>@{{result}}</pre>
+        <br>
+
         <div class="nav left">
             <span>[^]</span>
             <span>day</span>

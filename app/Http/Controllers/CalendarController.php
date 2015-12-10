@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
+use \DateTime;
+use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
@@ -61,6 +63,68 @@ class CalendarController extends Controller
         // ];
 
         return json_encode($events);
+    }
+
+    public function getSetEventTime ($id)
+    {
+        //$id = 1;
+        $start = new DateTime();
+        $end = new DateTime();
+
+        echo $id;
+        echo '<br>';
+        echo $start->format('Y-m-d H:i:s');
+        echo '<br>';
+        echo $end->format('Y-m-d H:i:s');
+        echo '<br>';
+
+        DB::table('events')
+            ->where('id', $id)
+            ->update([
+                'start' => $start,
+                'end' => $end
+            ])
+        ;
+
+    }
+
+    //public function postSetEventTime ($data)
+    public function postSetEventTime (Request $request)
+    {
+        if (!$request) {
+            return "No request!";
+        }
+
+        if (!$request->data) {
+            return "No data!";
+        }
+
+
+        if ($request->data["id"]) {
+
+            $id = $request->data["id"];
+            $start = new DateTime();
+            $end = new DateTime();
+
+            // echo $id;
+            // echo '<br>';
+            // echo $start->format('Y-m-d H:i:s');
+            // echo '<br>';
+            // echo $end->format('Y-m-d H:i:s');
+            // echo '<br>';
+
+            DB::table('events')
+                ->where('id', $id)
+                ->update([
+                    'start' => $start,
+                    'end' => $end
+                ])
+            ;
+
+            return json_encode([$id, $start, $end]);
+        }
+
+        return "No id!";
     }
 
     /**
