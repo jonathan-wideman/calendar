@@ -36,7 +36,7 @@ app.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
     //     },
     // ];
 
-    $http.get('calendar/events')
+    $http.get('events')
     .success(function(data) {
         $scope.events = data;
     });

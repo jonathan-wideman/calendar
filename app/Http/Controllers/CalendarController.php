@@ -14,6 +14,11 @@ class CalendarController extends Controller
         return view('calendar');
     }
 
+    public function getExample()
+    {
+        return view('angEg');
+    }
+
     public function getEvents()
     {
 
