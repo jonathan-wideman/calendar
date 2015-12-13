@@ -847,9 +847,10 @@
                 <div id="dView" role="presentation" class="tab-pane fade">
 
                   <table class="weekView">
+                    <div id="displayMoment"></div>
                     <button onclick="yesterday()"<i class=" glyphicon glyphicon-menu-left"></i></button>
                     <button onclick="tomorrow()"<i class=" glyphicon glyphicon-menu-right"></i></button>
-                      <div id="displayMoment"></div>
+
                     <tr>
                       <th class="time"></th>
                       <th></th>
@@ -1421,13 +1422,13 @@
 
 
       function lastWeek() {
-        Sun = moment(NowMoment.day(0-7)).format("ddd, MMMM Do"),
-        Mon = moment(NowMoment.day(1-7)).format("ddd, MMMM Do"),
-        Tue = moment(NowMoment.day(2-7)).format("ddd, MMMM Do"),
-        Wed = moment(NowMoment.day(3-7)).format("ddd, MMMM Do"),
-        Thu = moment(NowMoment.day(4-7)).format("ddd, MMMM Do"),
-        Fri = moment(NowMoment.day(5-7)).format("ddd, MMMM Do"),
-        Sat = moment(NowMoment.day(6-7)).format("ddd, MMMM Do");
+        Sun = moment(NowMoment.day(-7)).format("ddd, Do"),
+        Mon = moment(NowMoment.day(1)).format("ddd, Do"),
+        Tue = moment(NowMoment.day(2)).format("ddd, Do"),
+        Wed = moment(NowMoment.day(3)).format("ddd, Do"),
+        Thu = moment(NowMoment.day(4)).format("ddd, Do"),
+        Fri = moment(NowMoment.day(5)).format("ddd, Do"),
+        Sat = moment(NowMoment.day(6)).format("ddd, Do");
         monthYear = moment(NowMoment.day(3)).format("MMMM YYYY");
 
 
@@ -1443,13 +1444,13 @@
 
       //nextWeek function
       function nextWeek() {
-        Sun = moment(NowMoment.day(0+7)).format("ddd, MMMM Do"),
-        Mon = moment(NowMoment.day(1+7)).format("ddd, MMMM Do"),
-        Tue = moment(NowMoment.day(2+7)).format("ddd, MMMM Do"),
-        Wed = moment(NowMoment.day(3+7)).format("ddd, MMMM Do"),
-        Thu = moment(NowMoment.day(4+7)).format("ddd, MMMM Do"),
-        Fri = moment(NowMoment.day(5+7)).format("ddd, MMMM Do"),
-        Sat = moment(NowMoment.day(6+7)).format("ddd, MMMM Do");
+        Sun = moment(NowMoment.day(7)).format("ddd, Do"),
+        Mon = moment(NowMoment.day(1)).format("ddd, Do"),
+        Tue = moment(NowMoment.day(2)).format("ddd, Do"),
+        Wed = moment(NowMoment.day(3)).format("ddd, Do"),
+        Thu = moment(NowMoment.day(4)).format("ddd, Do"),
+        Fri = moment(NowMoment.day(5)).format("ddd, Do"),
+        Sat = moment(NowMoment.day(6)).format("ddd, Do");
         monthYear = moment(NowMoment.day(3)).format("MMMM YYYY");
 
         document.getElementById("sunDisplay").innerHTML = Sun;
