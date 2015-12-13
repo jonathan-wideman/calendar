@@ -155,10 +155,18 @@
         text-align: center;
       }
 
+      #monthTitle {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      #calLayout {
+        text-align: center;
+      }
+
 
 
       </style>
-    <button class="btn1"><i class=" glyphicon glyphicon-menu-up"></i></button>
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -190,6 +198,7 @@
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
+      <button class="btn1"><i class=" glyphicon glyphicon-menu-up"></i></button>
       </head>
       <body>
 
@@ -199,20 +208,15 @@
           <!--Month view layout-->
           <div class="tab-content">
             <div id="mView" role="presentation" class="tab-pane fade in active">
+              <div id="monthTitle"></div>
+            <div id="calLayout">  <button onclick="lastMonth()"<i class=" glyphicon glyphicon-menu-left"></i></button>
+              <button onclick="nextMonth()"<i class=" glyphicon glyphicon-menu-right"></i></button></div>
 
-              <button onclick="lastMonth()"<i class=" glyphicon glyphicon-menu-left"></i></button>
-              <button onclick="nextMonth()"<i class=" glyphicon glyphicon-menu-right"></i></button>
+              <div id="calendarMonth"></div>
 
                 <script>
-                // these are labels for the days of the week
                 cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-                // these are human-readable month name labels, in order
-                cal_months_labels = ['January', 'February', 'March', 'April',
-                     'May', 'June', 'July', 'August', 'September',
-                     'October', 'November', 'December'];
-
-                     // these are the days of the week for each month, in order
                 cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                 // this is the current date
                 cal_current_date = new Date();
@@ -231,17 +235,13 @@
                   var monthLength = cal_days_in_month[this.month];
 
                   // do the header
-                  var monthName = cal_months_labels[this.month]
-                  var html = '<table class="monthView">';
-                  html += '<tr><th colspan="7">';
-                  html +=  monthName + "&nbsp;" + this.year;
-                  html += '</th></tr>';
+                  var html = '<br><table class="monthView">';
                   html += '<tr class="calendar-header">';
 
                   for(var i = 0; i <= 6; i++ ){
-                    html += '<td class="calendar-header-day">';
+                    html += '<th>';
                     html += cal_days_labels[i];
-                    html += '</td>';
+                    html += '</th>';
                   }
                   html += '</tr><tr>';
 
@@ -276,29 +276,40 @@
                 </script>
 
                 <script type="text/javascript">
+                var Moment = moment();
+                document.getElementById("monthTitle").innerHTML = Moment.format("MMMM YYYY");
                 var cal = new Calendar();
                 cal.generateHTML();
-                document.write(cal.getHTML());
-                </script>
+                document.getElementById("calendarMonth").innerHTML = cal.getHTML();
 
-                <script type="text/javascript">
                  function nextMonth() {
-                   var cal = new Calendar(this.month+1);
+                   Moment.add(1, 'month');
+                   document.getElementById("monthTitle").innerHTML = Moment.format("MMMM YYYY");
+                   var month = Moment.month();
+                   var cal = new Calendar(month);
                    cal.generateHTML();
-                   document.write(cal.getHTML());
+                   document.getElementById("calendarMonth").innerHTML = cal.getHTML();
                  }
 
+                 function lastMonth() {
+                   Moment.subtract(1, 'month');
+                   document.getElementById("monthTitle").innerHTML = Moment.format("MMMM YYYY");
+                   var month = Moment.month();
+                   var cal = new Calendar(month);
+                   cal.generateHTML();
+                   document.getElementById("calendarMonth").innerHTML = cal.getHTML();
+                 }
                 </script>
             </div>
 
                 <!--Week view layout-->
                 <div id="wView" role="presentation" class="tab-pane fade">
                   <div id="monthYear"></div>
-                  <button onclick="lastWeek()"<i class=" glyphicon glyphicon-menu-left"></i></button>
-                  <button onclick="nextWeek()"<i class=" glyphicon glyphicon-menu-right"></i></button>
+                <div id="calLayout"><button onclick="lastWeek()"<i class=" glyphicon glyphicon-menu-left"></i></button>
+                  <button onclick="nextWeek()"<i class=" glyphicon glyphicon-menu-right"></i></button></div>
 
 
-                  <table class="weekView">
+                  <br><table class="weekView">
 
                     <tr>
                       <th class="time"></th>
@@ -848,8 +859,8 @@
 
                   <table class="weekView">
                     <div id="displayMoment"></div>
-                    <button onclick="yesterday()"<i class=" glyphicon glyphicon-menu-left"></i></button>
-                    <button onclick="tomorrow()"<i class=" glyphicon glyphicon-menu-right"></i></button>
+                    <div id="calLayout"><button onclick="yesterday()"<i class=" glyphicon glyphicon-menu-left"></i></button>
+                    <button onclick="tomorrow()"<i class=" glyphicon glyphicon-menu-right"></i></button></div>
 
                     <tr>
                       <th class="time"></th>
