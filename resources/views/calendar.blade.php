@@ -10,7 +10,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-        <title>Laravel</title>
+        <!--Moment.JS Date Library-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+
+        <title>My Calendar</title>
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
@@ -86,6 +89,14 @@
               vertical-align: top;
             }
 
+            table.monthView tr:first-child td {
+              text-align: center;
+              vertical-align: text-top;
+              height: 25px;
+              width: 25px;
+              font-weight: 700;
+            }
+
            td:hover {
               background-color: #337ab7;
               color: white;
@@ -133,8 +144,21 @@
         width: 25px;
         font-weight: 700;
       }
-      </style>
 
+      #displayMoment {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      #monthYear {
+        font-size: 20px;
+        text-align: center;
+      }
+
+
+
+      </style>
+    <button class="btn1"><i class=" glyphicon glyphicon-menu-up"></i></button>
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -145,12 +169,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <i class=" glyphicon glyphicon-menu-up"></i>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
 
-
+              <ul class="nav navbar-nav">
+                <li role="presentation"> <a data-toggle="tab" href="#wView">Week</a></li>
+                <li role="presentation" class="active"> <a data-toggle="tab" href="#mView">Month</a></li>
+                <li role="presentation"> <a data-toggle="tab" href="#dView">Day</a></li>
+              </ul>
             <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search" style="height: 25px;">
@@ -164,99 +190,125 @@
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
-
-
       </head>
-
       <body>
 
 
 
-        <div>
-          <ul class="nav nav-tabs">
-            <li role="presentation"> <a data-toggle="tab" href="#wView">Week</a></li>
-            <li role="presentation" class="active"> <a data-toggle="tab" href="#mView">Month</a></li>
-            <li role="presentation"> <a data-toggle="tab" href="#dView">Day</a></li>
-          </ul>
 
           <!--Month view layout-->
           <div class="tab-content">
             <div id="mView" role="presentation" class="tab-pane fade in active">
 
-              <table class="monthView">
-                <tr>
-                  <th>Sun</th>
-                  <th>Mon</th>
-                  <th>Tue</th>
-                  <th>Wed</th>
-                  <th>Thu</th>
-                  <th>Fri</th>
-                  <th>Sat</th>
-                </tr>
+              <button onclick="lastMonth()"<i class=" glyphicon glyphicon-menu-left"></i></button>
+              <button onclick="nextMonth()"<i class=" glyphicon glyphicon-menu-right"></i></button>
 
+                <script>
+                // these are labels for the days of the week
+                cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                  </tr>
-                    <tr>
-                      <td>13</td>
-                      <td>14</td>
-                      <td>15</td>
-                      <td>16</td>
-                      <td>17</td>
-                      <td>18</td>
-                      <td>19</td>
-                    </tr>
-                    <tr>
-                      <td>20</td>
-                      <td>21</td>
-                      <td>22</td>
-                      <td>23</td>
-                      <td>24</td>
-                      <td>25</td>
-                      <td>26</td>
-                    </tr>
-                    <tr>
-                      <td>27</td>
-                      <td>28</td>
-                      <td>29</td>
-                      <td>30</td>
-                      <td>31</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </table>
-                </div>
+                // these are human-readable month name labels, in order
+                cal_months_labels = ['January', 'February', 'March', 'April',
+                     'May', 'June', 'July', 'August', 'September',
+                     'October', 'November', 'December'];
+
+                     // these are the days of the week for each month, in order
+                cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                // this is the current date
+                cal_current_date = new Date();
+                function Calendar(month, year) {
+                  this.month = (isNaN(month) || month == null) ? cal_current_date.getMonth() : month;
+                  this.year  = (isNaN(year) || year == null) ? cal_current_date.getFullYear() : year;
+                  this.html = '';
+                }
+                Calendar.prototype.generateHTML = function(){
+
+                  // get first day of month
+                  var firstDay = new Date(this.year, this.month, 1);
+                  var startingDay = firstDay.getDay();
+
+                  // find number of days in month
+                  var monthLength = cal_days_in_month[this.month];
+
+                  // do the header
+                  var monthName = cal_months_labels[this.month]
+                  var html = '<table class="monthView">';
+                  html += '<tr><th colspan="7">';
+                  html +=  monthName + "&nbsp;" + this.year;
+                  html += '</th></tr>';
+                  html += '<tr class="calendar-header">';
+
+                  for(var i = 0; i <= 6; i++ ){
+                    html += '<td class="calendar-header-day">';
+                    html += cal_days_labels[i];
+                    html += '</td>';
+                  }
+                  html += '</tr><tr>';
+
+                  // fill in the days
+                  var day = 1;
+                  // this loop is for is weeks (rows)
+                  for (var i = 0; i < 9; i++) {
+                    // this loop is for weekdays (cells)
+                    for (var j = 0; j <= 6; j++) {
+                      html += '<td class="calendar-day">';
+                      if (day <= monthLength && (i > 0 || j >= startingDay)) {
+                        html += day;
+                        day++;
+                      }
+                      html += '</td>';
+                    }
+                    // stop making rows if we've run out of days
+                    if (day > monthLength) {
+                      break;
+                    } else {
+                      html += '</tr><tr>';
+                    }
+                  }
+                  html += '</tr></table>';
+
+                  this.html = html;
+                }
+
+                Calendar.prototype.getHTML = function() {
+                  return this.html;
+                }
+                </script>
+
+                <script type="text/javascript">
+                var cal = new Calendar();
+                cal.generateHTML();
+                document.write(cal.getHTML());
+                </script>
+
+                <script type="text/javascript">
+                 function nextMonth() {
+                   var cal = new Calendar(this.month+1);
+                   cal.generateHTML();
+                   document.write(cal.getHTML());
+                 }
+
+                </script>
+            </div>
 
                 <!--Week view layout-->
                 <div id="wView" role="presentation" class="tab-pane fade">
+                  <div id="monthYear"></div>
+                  <button onclick="lastWeek()"<i class=" glyphicon glyphicon-menu-left"></i></button>
+                  <button onclick="nextWeek()"<i class=" glyphicon glyphicon-menu-right"></i></button>
+
 
                   <table class="weekView">
 
                     <tr>
                       <th class="time"></th>
-                      <th>Sun</th>
-                      <th>Mon</th>
-                      <th>Tue</th>
-                      <th>Wed</th>
-                      <th>Thu</th>
-                      <th>Fri</th>
-                      <th>Sat</th>
+                      <th><div id="sunDisplay"></div></th>
+                      <th><div id="monDisplay"></div></th>
+                      <th><div id="tueDisplay"></div></th>
+                      <th><div id="wedDisplay"></div></th>
+                      <th><div id="thuDisplay"></div></th>
+                      <th><div id="friDisplay"></div></th>
+                      <th><div id="satDisplay"></div></th>
                     </tr>
 
                     <tr>
@@ -795,18 +847,20 @@
                 <div id="dView" role="presentation" class="tab-pane fade">
 
                   <table class="weekView">
-
+                    <button onclick="yesterday()"<i class=" glyphicon glyphicon-menu-left"></i></button>
+                    <button onclick="tomorrow()"<i class=" glyphicon glyphicon-menu-right"></i></button>
+                      <div id="displayMoment"></div>
                     <tr>
                       <th class="time"></th>
                       <th></th>
                       <th></th>
                       <th></th>
-                      <th>Day of the week-Date</th>
+                      <th></th>
                       <th></th>
                       <th></th>
                       <th></th>
                     </tr>
-                    
+
                     <tr>
                       <td rowspan="2">12am</td>
                       <td></td>
@@ -1335,11 +1389,108 @@
                       <td></td>
                     </tr>
 
-
                   </table>
                 </div>
 
               </div>
             </div>
           </body>
+
+  <!--Display Week View Date-->
+    <script type="text/javascript">
+
+    var NowMoment = moment();
+    var Sun = moment(NowMoment.day(0)).format("ddd, Do"),
+        Mon = moment(NowMoment.day(1)).format("ddd, Do"),
+        Tue = moment(NowMoment.day(2)).format("ddd, Do"),
+        Wed = moment(NowMoment.day(3)).format("ddd, Do"),
+        Thu = moment(NowMoment.day(4)).format("ddd, Do"),
+        Fri = moment(NowMoment.day(5)).format("ddd, Do"),
+        Sat = moment(NowMoment.day(6)).format("ddd, Do"),
+        monthYear = moment(NowMoment.day(3)).format("MMMM YYYY");
+
+
+      document.getElementById("sunDisplay").innerHTML = Sun;
+      document.getElementById("monDisplay").innerHTML = Mon;
+      document.getElementById("tueDisplay").innerHTML = Tue;
+      document.getElementById("wedDisplay").innerHTML = Wed;
+      document.getElementById("thuDisplay").innerHTML = Thu;
+      document.getElementById("friDisplay").innerHTML = Fri;
+      document.getElementById("satDisplay").innerHTML = Sat;
+      document.getElementById("monthYear").innerHTML = monthYear;
+
+
+      function lastWeek() {
+        Sun = moment(NowMoment.day(0-7)).format("ddd, MMMM Do"),
+        Mon = moment(NowMoment.day(1-7)).format("ddd, MMMM Do"),
+        Tue = moment(NowMoment.day(2-7)).format("ddd, MMMM Do"),
+        Wed = moment(NowMoment.day(3-7)).format("ddd, MMMM Do"),
+        Thu = moment(NowMoment.day(4-7)).format("ddd, MMMM Do"),
+        Fri = moment(NowMoment.day(5-7)).format("ddd, MMMM Do"),
+        Sat = moment(NowMoment.day(6-7)).format("ddd, MMMM Do");
+        monthYear = moment(NowMoment.day(3)).format("MMMM YYYY");
+
+
+        document.getElementById("sunDisplay").innerHTML = Sun;
+        document.getElementById("monDisplay").innerHTML = Mon;
+        document.getElementById("tueDisplay").innerHTML = Tue;
+        document.getElementById("wedDisplay").innerHTML = Wed;
+        document.getElementById("thuDisplay").innerHTML = Thu;
+        document.getElementById("friDisplay").innerHTML = Fri;
+        document.getElementById("satDisplay").innerHTML = Sat;
+        document.getElementById("monthYear").innerHTML = monthYear;
+      }
+
+      //nextWeek function
+      function nextWeek() {
+        Sun = moment(NowMoment.day(0+7)).format("ddd, MMMM Do"),
+        Mon = moment(NowMoment.day(1+7)).format("ddd, MMMM Do"),
+        Tue = moment(NowMoment.day(2+7)).format("ddd, MMMM Do"),
+        Wed = moment(NowMoment.day(3+7)).format("ddd, MMMM Do"),
+        Thu = moment(NowMoment.day(4+7)).format("ddd, MMMM Do"),
+        Fri = moment(NowMoment.day(5+7)).format("ddd, MMMM Do"),
+        Sat = moment(NowMoment.day(6+7)).format("ddd, MMMM Do");
+        monthYear = moment(NowMoment.day(3)).format("MMMM YYYY");
+
+        document.getElementById("sunDisplay").innerHTML = Sun;
+        document.getElementById("monDisplay").innerHTML = Mon;
+        document.getElementById("tueDisplay").innerHTML = Tue;
+        document.getElementById("wedDisplay").innerHTML = Wed;
+        document.getElementById("thuDisplay").innerHTML = Thu;
+        document.getElementById("friDisplay").innerHTML = Fri;
+        document.getElementById("satDisplay").innerHTML = Sat;
+        document.getElementById("monthYear").innerHTML = monthYear;
+      }
+
+      </script>
+
+<!--Display Day view date-->
+        <script type="text/javascript">
+          var NowMoment = moment();
+          var Day = moment(NowMoment).format("dddd, MMMM Do YYYY");
+          var displayDate = document.getElementById('displayMoment');
+          displayDate.innerHTML = Day;
+
+
+          //tomorrow function displays tomorrow's date
+          function tomorrow() {
+            var nextDay = moment(NowMoment.add('days', 1)).format("ddd, MMMM Do YYYY");
+            displayDate.innerHTML = nextDay;
+          }
+
+          function yesterday() {
+            var previousDay = moment(NowMoment.add('days', -1)).format("ddd, MMMM Do YYYY");
+            displayDate.innerHTML = previousDay;
+          }
+
+        </script>
+
+<!--Script to toggle Navbar-->
+        <script>
+          $(document).ready(function(){
+            $(".btn1").click(function(){
+              $("nav").slideToggle("fast", "linear");
+            });
+          });
+          </script>
           </html>
