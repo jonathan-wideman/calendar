@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-        <!-- Bootstrap CSS served from a CDN -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap CSS served from a CDN -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
         <style>
             html, body {
                 height: 100%;
             }
-            
+
             body {
                 margin: 0;
                 padding: 0;
@@ -38,12 +40,17 @@
 
             .title {
                 font-size: 96px;
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'lato' ;
+
+            }
+            .title {
+              font-size: 96px;
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              display: table;
+              font-weight: 100;
+              font-family: 'lato' ;
+
             }
         </style>
     </head>
@@ -87,12 +94,12 @@
                                                 </div>
 
                                                 <div class="input-group">
-                                                    <div class="checkbox">
+                                                    <div class"input-group" >
                                                         <input type="checkbox" name="remember"> Remember Me
                                                     </div>
 
                                                     <div style="margin-top:10px" class="form-group">
-                                                        <div class="input-group">
+                                                        <div "col-md-offset-3 col-md-9">
                                                             <button id="btn-login" type="submit" href="#" class="btn btn-success"><i class=" glyphicon glyphicon-ok-sign">Login</i></button>
                                                         </div>
                                                     </div>
@@ -161,9 +168,10 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-        
+
     </body>
 </html>
