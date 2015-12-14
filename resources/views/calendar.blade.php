@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
         <!--Moment.JS Date Library-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
@@ -78,6 +79,7 @@
               font-family: 'lato';
               font-size: 13px;
               width: 100%;
+              table-layout:fixed;
             }
 
             table.monthView td {
@@ -176,6 +178,17 @@
         font-size: 15px;
       }
 
+      #events {
+        font-size: 13px;
+        color: white;
+      }
+
+      #eventsBorder {
+        border-style:solid;
+        border-color:#287EC7;
+        background:#287EC7;
+      }
+
 
 
       </style>
@@ -233,6 +246,8 @@
                 cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
                 cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                monthMoment = moment();
+                curMonth = monthMoment.month();
                 // this is the current date
                 cal_current_date = new Date();
                 function Calendar(month, year) {
@@ -261,10 +276,42 @@
                   for (var i = 0; i < 9; i++) {
                     for (var j = 0; j <= 6; j++) {
                       html += '<td class="calendar-day">';
-                      if (day <= monthLength && (i > 0 || j >= startingDay)) {
+
+                      if (day === 14 && curMonth === 11){
+                        html += day;
+                        html += '<br><div id="eventsBorder"><div id="events"><i class="fa fa-meh-o">Project Presentation</i></div></div>';
+                        day++;
+                      }
+
+                      else if (day === 24 && curMonth === 11){
+                        html += day;
+                        html += '<br><div id="eventsBorder"><div id="events"><i class="fa fa-tree">Christmas Eve</i></div></div>';
+                        day++;
+                      }
+
+                      else if (day === 25 && curMonth === 11){
+                        html+= day;
+                        html += '<br><div id="eventsBorder"><div id="events"><i class="fa fa-gift">Christmas Day</i></div></div>';
+                        day++;
+                      }
+
+                      else if (day === 31 && curMonth === 11){
+                        html += day;
+                        html += '<br><div id="eventsBorder"><div id="events"><i class="fa fa-glass">New Year\'s Eve</i></div></div>';
+                        day++;
+                      }
+
+                      else if (day === 18 && curMonth === 0){
+                        html += day;
+                        html += '<br><div id="eventsBorder"><div id="events"><i class="fa fa-book">Martin Luther King Day</i></div></div>';
+                        day++;
+                      }
+
+                      else if (day <= monthLength && (i > 0 || j >= startingDay)) {
                         html += day;
                         day++;
                       }
+
                       html += '</td>';
                     }
                     if (day > monthLength) {
@@ -281,9 +328,9 @@
                 Calendar.prototype.getHTML = function() {
                   return this.html;
                 }
-                </script>
 
-                <script type="text/javascript">
+
+
                 var Moment = moment();
                 document.getElementById("monthTitle").innerHTML = Moment.format("MMMM YYYY");
                 var cal = new Calendar();
@@ -291,6 +338,12 @@
                 document.getElementById("calendarMonth").innerHTML = cal.getHTML();
 
                  function nextMonth() {
+                   curMonth += 1;
+
+                   if (curMonth === 12){
+                     curMonth = 0;
+                   }
+
                    Moment.add(1, 'month');
                    document.getElementById("monthTitle").innerHTML = Moment.format("MMMM YYYY");
                    var month = Moment.month();
@@ -300,6 +353,10 @@
                  }
 
                  function lastMonth() {
+                   curMonth -= 1;
+                   if (curMonth < 0){
+                     curMonth = 11;
+                   }
                    Moment.subtract(1, 'month');
                    document.getElementById("monthTitle").innerHTML = Moment.format("MMMM YYYY");
                    var month = Moment.month();
