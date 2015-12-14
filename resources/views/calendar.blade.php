@@ -26,8 +26,8 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-weight: bold;
-                font-family: 'Lato';
+                font-weight: 100;
+                font-family: Verdana, Geneva, sans-serif;
             }
 
             .container {
@@ -43,7 +43,7 @@
 
             .nav {
 
-                font-family: ;
+                font-family: Verdana, Geneva, sans-serif;
                 font-size:20px;
             }
 
@@ -63,21 +63,22 @@
                 font-size:15px;
             }
             .nav2 {
-              font-size:20px;
-              margin: 0;
-              padding: 0;
-              width: 50%;
-              display: table;
-              font-weight: 100;
-              font-family: 'lato' ;
+                font-size:20px;
+                margin: 0;
+                padding: 0;
+                width: 50%;
+                display: table;
+                font-weight: 100;
+                font-family: Verdana, Geneva, sans-serif;
             }
 
-            table.monthView {
-              background: #fff;
-              border-collapse: collapse;
-              font-family: 'lato';
-              font-size: 13px;
-              width: 100%;
+            table {
+                background: #fff;
+                border-collapse: collapse;
+                color: #222;
+                font-family: courier;
+                font-size: 13px;
+                width: 100%;
             }
 
             table.monthView td {
