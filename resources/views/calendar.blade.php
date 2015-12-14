@@ -23,7 +23,7 @@
                 width: 100%;
                 display: table;
                 font-weight: 100;
-                font-family: "Lucida Console", Monospace;
+                font-family: Verdana, Geneva, sans-serif;
             }
 
             .container {
