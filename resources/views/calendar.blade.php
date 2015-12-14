@@ -39,7 +39,7 @@
 
             .nav {
 
-                font-family: ;
+                font-family: Verdana, Geneva, sans-serif;
                 font-size:20px;
             }
 
@@ -69,14 +69,14 @@
                 width: 50%;
                 display: table;
                 font-weight: 100;
-                font-family: 'lato' ;
+                font-family: Verdana, Geneva, sans-serif;
             }
 
             table {
                 background: #fff;
                 border-collapse: collapse;
                 color: #222;
-                font-family: 'lato';
+                font-family: courier;
                 font-size: 13px;
                 width: 100%;
             }
