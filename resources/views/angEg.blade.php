@@ -70,7 +70,7 @@
 
         <p>Hello @{{name}}!</p>
 
-        <p ng-repeat="event in events">@{{event.name}}, starts: @{{event.start}}, ends: @{{event.end}}</p>
+        <p ng-repeat="event in events">@{{event.name}}, id: @{{event.id}} starts: @{{event.start}}, ends: @{{event.end}}</p>
 
         <a ng-click="showStuff = !showStuff">show</a>
 
