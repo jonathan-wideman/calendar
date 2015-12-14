@@ -164,6 +164,18 @@
         text-align: center;
       }
 
+      #navToggle {
+        position:relative;
+        top: -15px;
+        left: 5px;
+        font-size: 30;
+
+      }
+
+      #navUser {
+        font-size: 15px;
+      }
+
 
 
       </style>
@@ -192,14 +204,17 @@
               <button type="submit" style="height: 25px;" class="btn btn-default">Submit</button>
             </form>
             <div class="nav right">
-              <span>{{ Auth::user()->email }}</span>
-              <a href="logout"><i class=" glyphicon glyphicon-off"></i></a>
+              <div id="navUser"><span>{{ Auth::user()->email }}</span>
+              <a href="logout"><i class=" glyphicon glyphicon-off"></i></a></div>
             </div>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
-      <button class="btn1"><i class=" glyphicon glyphicon-menu-up"></i></button>
+
+      <!-- Toggle Nav Button-->
+      <div id="navToggle"><button class="btn1"><i class=" glyphicon glyphicon-menu-down"></i></button></div>
       </head>
+
       <body>
 
 
@@ -227,14 +242,11 @@
                 }
                 Calendar.prototype.generateHTML = function(){
 
-                  // get first day of month
                   var firstDay = new Date(this.year, this.month, 1);
                   var startingDay = firstDay.getDay();
 
-                  // find number of days in month
                   var monthLength = cal_days_in_month[this.month];
 
-                  // do the header
                   var html = '<br><table class="monthView">';
                   html += '<tr class="calendar-header">';
 
@@ -245,11 +257,8 @@
                   }
                   html += '</tr><tr>';
 
-                  // fill in the days
                   var day = 1;
-                  // this loop is for is weeks (rows)
                   for (var i = 0; i < 9; i++) {
-                    // this loop is for weekdays (cells)
                     for (var j = 0; j <= 6; j++) {
                       html += '<td class="calendar-day">';
                       if (day <= monthLength && (i > 0 || j >= startingDay)) {
@@ -258,7 +267,6 @@
                       }
                       html += '</td>';
                     }
-                    // stop making rows if we've run out of days
                     if (day > monthLength) {
                       break;
                     } else {
@@ -864,7 +872,7 @@
 
                     <tr>
                       <th class="time"></th>
-                      <th></th>
+                      <th ></th>
                       <th></th>
                       <th></th>
                       <th></th>
@@ -875,530 +883,218 @@
 
                     <tr>
                       <td rowspan="2">12am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">1am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">2am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">3am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">4am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">5am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">6am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">7am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">8am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">9am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">10am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">11am</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">12pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">1pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">2pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">3pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">4pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">5pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">6pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">7pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">8pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">9pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">10pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
                       <td rowspan="2">11pm</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                     <tr>
-
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td colspan="7"></td>
                     </tr>
 
                   </table>
@@ -1491,15 +1187,17 @@
           }
 
           function yesterday() {
-            var previousDay = moment(NowMoment.add('days', -1)).format("ddd, MMMM Do YYYY");
+            var previousDay = moment(NowMoment.subtract('days', 1)).format("ddd, MMMM Do YYYY");
             displayDate.innerHTML = previousDay;
           }
 
         </script>
 
 <!--Script to toggle Navbar-->
+
         <script>
           $(document).ready(function(){
+
             $(".btn1").click(function(){
               $("nav").slideToggle("fast", "linear");
             });
