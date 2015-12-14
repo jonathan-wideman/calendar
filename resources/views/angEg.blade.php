@@ -70,11 +70,23 @@
 
         <p>Hello @{{name}}!</p>
 
-        <p ng-repeat="event in events">@{{event.name}}, starts: @{{event.start}}, ends: @{{event.end}}</p>
+        <p ng-repeat="event in events">@{{event.name}}, id: @{{event.id}} starts: @{{event.start}}, ends: @{{event.end}}</p>
 
         <a ng-click="showStuff = !showStuff">show</a>
 
         <p ng-show="showStuff">I've been shown</p>
+
+        <br>
+        <a ng-click="updateTime()">Update Time</a>
+        <br>
+        <p>Data:</p>
+        <pre>@{{data}}</pre>
+        <br>
+        <p>Status: @{{status}}</p>
+        <br>
+        <p>Result:
+        <pre>@{{result}}</pre>
+        <br>
 
         <div class="nav left">
             <span>[^]</span>
